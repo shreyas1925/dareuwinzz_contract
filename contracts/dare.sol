@@ -1,5 +1,4 @@
 pragma solidity >=0.4.20;
-
 contract Lottery
 {
     address public manager;
@@ -9,5 +8,4 @@ contract Lottery
         manager = msg.sender;
     
     }
-
 }
