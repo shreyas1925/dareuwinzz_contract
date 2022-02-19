@@ -5,4 +5,9 @@ contract Lottery
     constructor() public {
         manager = msg.sender;
     }
+    
+    function getManagerId() public view returns(uid)
+    {
+    
+    }
 }
