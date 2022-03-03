@@ -18,5 +18,4 @@ contract Lottery
         players.push(msg.sender);
     }
     
-
 }
