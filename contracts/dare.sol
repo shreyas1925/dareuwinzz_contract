@@ -15,5 +15,4 @@ contract Lottery
         require(msg.value > .01 ether);
         players.push(msg.sender);
     }
-    
 }
