@@ -32,7 +32,7 @@ contract Lottery
         _;
     }
 
-    function getAllPlayers() public view returns (address[] memory)
+    function getAllPlayers() public view returns (address[])
     {
         return players;
     }
