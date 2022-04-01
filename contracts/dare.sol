@@ -2,7 +2,7 @@ pragma solidity >=0.4.20;
 contract Lottery
 {
     address public manager;
-    address[] public payable players;
+    address[] public players;
 
     // msg is a global one it is available in any function envocation
     // ex : msg.sender,msg.gas,msg.data etc
@@ -21,8 +21,14 @@ contract Lottery
         return uint(keccak256(abi.encodePacked(block.difficulty,block.timestamp,players)));
     }
 
-   function pickaWinner() public {
-        uint idx = random() % players.length; // get the random index from 0 to players.length
-        payable(players[idx]).transfer(address(this).balance);  // inorder to transfer all ethers in contract 
+   function pickaWinner() public restricted {
+        uint idx = random() % players.length;
+        payable(players[idx]).transfer(address(this).balance);
+        players = new address[](0); // I am emptying the players array
+    }
+
+    modifier restricted {
+        require(msg.sender == manager);
+        _;
     }
 }
