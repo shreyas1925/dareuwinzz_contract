@@ -1,18 +1,20 @@
 pragma solidity >=0.4.20;
 contract Lottery
+
 {
     address public manager;
     address[] public players;
 
     // msg is a global one it is available in any function envocation
     // ex : msg.sender,msg.gas,msg.data etc
-    
+
     constructor() public {
         manager = msg.sender;
     }
+    
     // when someone call this function they send along some ether
     function enter() public payable {
-        require(msg.value > .01 ether);
+        require(msg.value > .01 ether,"User not authorized to pick a winner");
         players.push(msg.sender);
     }
 
@@ -28,11 +30,11 @@ contract Lottery
     }
 
     modifier restricted {
-        require(msg.sender == manager);
+        require(msg.sender == manager,"User not authorized to pick a winner");
         _;
     }
 
-    function getAllPlayers() public view returns (address[])
+    function getAllPlayers() public view returns (address[] memory)
     {
         return players;
     }
