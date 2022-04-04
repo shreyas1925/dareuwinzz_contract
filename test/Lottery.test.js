@@ -19,5 +19,9 @@ describe('Lottery Contract', () => {
     it('deploys a contract', () => {
         assert.ok(lottery.options.address);
     })
+
+    it('deploys a contract', () => {
+        assert.ok(lottery.options.address);
+    })
 })
 
